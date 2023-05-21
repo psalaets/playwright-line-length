@@ -14,8 +14,8 @@
     "build": "npm run build-browser-code && tsc",
     "pretest": "npm run build",
     "test": "playwright test",
-    "preship": "npm run build",
-    "ship": "np"
+    "apreship": "npm run build",
+    "ship": "np --no-tests"
   },
   "keywords": [
     "line",
