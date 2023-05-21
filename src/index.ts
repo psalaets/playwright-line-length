@@ -2,22 +2,31 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { URL } from 'url';
 import { median } from './math';
+import { elementLineLength as elementLineLengthFn } from "element-line-length";
+import { Locator } from "@playwright/test";
+
+declare var elementLineLength: typeof elementLineLengthFn;
+
+declare global {
+  namespace PlaywrightTest {
+     interface Matchers<R, T> {
+      toHaveMedianLineLength(range: {min?: number, max?: number}): R;
+    }
+ }
+}
 
 // Load code as a string to eval in browser
 const __dirname = new URL('.', import.meta.url).pathname;
 const browserCodePath = path.resolve(__dirname, './browser-code.js');
 const browserCode = fs.readFileSync(browserCodePath).toString('utf-8');
 
+export type Range = {
+  min?: number;
+  max?: number;
+};
+
 export const lineLengthAssertions = {
-  /**
-   * @typedef {object} Range
-   * @property {number?} min
-   * @property {number?} max
-   *
-   * @param {Locator} locator
-   * @param {Range} range
-   */
-  async toHaveMedianLineLength(locator, range) {
+  async toHaveMedianLineLength(locator: Locator, range: Range) {
     if (range == null) {
       throw new Error(`range is required`);
     }
@@ -38,11 +47,13 @@ export const lineLengthAssertions = {
       await page.evaluate(browserCode);
 
       elHandle = await locator.elementHandle();
-      const lineLengths = await page.evaluate(element => elementLineLength(element), elHandle);
+      const lineLengths = await page.evaluate(element =>
+        element instanceof HTMLElement ? elementLineLength(element) : [],
+        elHandle
+      );
 
-      if (lineLengths.length > 0) {
-        const medianLength = median(lineLengths);
-
+      const medianLength = median(lineLengths);
+      if (medianLength != null) {
         if (medianLength < min) {
           return fail(`Median line length is ${medianLength} but must be >= ${min}`);
         }
@@ -63,15 +74,15 @@ export const lineLengthAssertions = {
   }
 };
 
-function pass(message) {
+function pass(message: string) {
   return result(message, true);
 }
 
-function fail(message) {
+function fail(message: string) {
   return result(message, false);
 }
 
-function result(message, pass) {
+function result(message: string, pass: boolean) {
   return {
     message: () => message,
     pass,

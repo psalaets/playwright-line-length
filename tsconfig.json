@@ -16,12 +16,12 @@
     "forceConsistentCasingInFileNames": true,
     // Begin properties from
     // https://www.typescriptlang.org/docs/handbook/declaration-files/dts-from-js.html#tsconfig
-    "allowJs": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist",
-    "declarationMap": true
+    // "allowJs": true,
+    // "emitDeclarationOnly": true,
+    // "declarationMap": true
     // End
+    "declaration": true,
+    "outDir": "dist",
   },
   "include": ["src"],
   "exclude": ["**/*.test.ts", "node_modules", "tests/**", ".history/**"]

@@ -49,21 +49,12 @@ test.describe('only min provided', () => {
 });
 
 test.describe('errors', () => {
-  test('no range provided', async ({ page }) => {
-    await page.goto('http://localhost:8080');
-
-    try {
-      await expect(page.locator('#p1')).toHaveMedianLineLength();
-      test.fail('Error expected but not thrown');
-    } catch(ignored) {}
-  });
-
   test('empty range object provided', async ({ page }) => {
     await page.goto('http://localhost:8080');
 
     try {
       await expect(page.locator('#p1')).toHaveMedianLineLength({});
-      test.fail('Error expected but not thrown');
+      test.fail();
     } catch(ignored) {}
   });
 
@@ -72,7 +63,7 @@ test.describe('errors', () => {
 
     try {
       await expect(page.locator('#p1')).toHaveMedianLineLength({min: 50, max: 40});
-      test.fail('Error expected but not thrown');
+      test.fail();
     } catch(ignored) {}
   });
 

@@ -9,12 +9,12 @@
   ],
   "scripts": {
     "serve-test-page": "http-server tests --port 8080 --silent",
-    "prebuild-browser-code": "rm -rf dist && mkdir dist && cp src/* dist/",
+    "prebuild-browser-code": "rm -rf dist && mkdir dist",
     "build-browser-code": "rollup -i src/browser-code.js -f es -o dist/browser-code.js -p @rollup/plugin-node-resolve",
     "build": "npm run build-browser-code && tsc",
     "pretest": "npm run build",
     "test": "playwright test",
-    "apreship": "npm run build",
+    "preship": "npm run build",
     "ship": "np --no-tests"
   },
   "keywords": [

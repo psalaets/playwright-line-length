@@ -1,8 +1,4 @@
-/**
- * @param {Array<number>} values
- * @return {number | null}
- */
-export function median(values) {
+export function median(values: Array<number>): number | null {
   if (values.length > 0) {
     const sortedValues = values.slice().sort((a, b) => a - b);
     const middleIndex = Math.floor(sortedValues.length / 2);
