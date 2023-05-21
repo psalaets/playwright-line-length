@@ -13,7 +13,9 @@
     "build-browser-code": "rollup -i src/browser-code.js -f es -o dist/browser-code.js -p @rollup/plugin-node-resolve",
     "build": "npm run build-browser-code && tsc",
     "pretest": "npm run build",
-    "test": "playwright test"
+    "test": "playwright test",
+    "preship": "npm run build",
+    "ship": "np"
   },
   "keywords": [
     "line",
@@ -34,6 +36,7 @@
     "@playwright/test": "^1.34.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "http-server": "^14.1.1",
+    "np": "^7.7.0",
     "rollup": "^3.22.0",
     "typescript": "^5.0.4"
   }
