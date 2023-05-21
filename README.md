@@ -46,5 +46,5 @@ MIT
 
 ## Related
 
-- [Module](https://gitlab.com/psalaets/element-line-length)
+- [Underlying module](https://gitlab.com/psalaets/element-line-length)
 - [Bookmarklet](https://psalaets.github.io/line-length/)
