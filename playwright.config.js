@@ -1,8 +1,11 @@
-import { defineConfig } from '@playwright/test';
+import { expect, defineConfig } from '@playwright/test';
+import { lineLengthAssertions } from './dist/index.js';
+
+expect.extend(lineLengthAssertions);
 
 export default defineConfig({
   use: {
-    headless: false
+    headless: true,
   },
   // Run your local dev server before starting the tests
   webServer: {

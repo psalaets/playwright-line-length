@@ -1,7 +1,4 @@
 import { test, expect } from "@playwright/test";
-import lineLengthAssertion from '../dist/index.js';
-
-lineLengthAssertion.apply(expect);
 
 test.describe('min and max provided', () => {
   test('median is good', async ({ page }) => {
@@ -55,29 +52,28 @@ test.describe('errors', () => {
   test('no range provided', async ({ page }) => {
     await page.goto('http://localhost:8080');
 
-    let thrown = false;
-
     try {
       await expect(page.locator('#p1')).toHaveMedianLineLength();
-    } catch(ignored) {
-      thrown = true;
-    }
-
-    expect(thrown).toBeTruthy();
+      test.fail('Error expected but not thrown');
+    } catch(ignored) {}
   });
 
   test('empty range object provided', async ({ page }) => {
     await page.goto('http://localhost:8080');
 
-    let thrown = false;
-
     try {
       await expect(page.locator('#p1')).toHaveMedianLineLength({});
-    } catch(ignored) {
-      thrown = true;
-    }
+      test.fail('Error expected but not thrown');
+    } catch(ignored) {}
+  });
 
-    expect(thrown).toBeTruthy();
+  test('min > max', async ({ page }) => {
+    await page.goto('http://localhost:8080');
+
+    try {
+      await expect(page.locator('#p1')).toHaveMedianLineLength({min: 50, max: 40});
+      test.fail('Error expected but not thrown');
+    } catch(ignored) {}
   });
 
   test('element has no lines', async ({ page }) => {
