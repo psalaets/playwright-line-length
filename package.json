@@ -1,0 +1,29 @@
+{
+  "name": "playwright-line-length",
+  "version": "1.0.0",
+  "description": "",
+  "module": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "serve-test-page": "http-server tests --port 8080 --silent",
+    "prebuild": "rm -rf dist; mkdir dist; cp src/* dist/",
+    "build": "rollup -i src/browser-code.js -f es -o dist/browser-code.js -p @rollup/plugin-node-resolve",
+    "pretest": "npm run build",
+    "test": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "element-line-length": "^2.0.1"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.34.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "http-server": "^14.1.1",
+    "rollup": "^3.22.0"
+  }
+}
