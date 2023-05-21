@@ -43,3 +43,8 @@ At least one of `min` and `max` are required.
 ## License
 
 MIT
+
+## Related
+
+- [Module](https://gitlab.com/psalaets/element-line-length)
+- [Bookmarklet](https://psalaets.github.io/line-length/)
