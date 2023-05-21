@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.2.0] - 2023-05-21
+
+### Changed
+
+- Tweak peer deps.
+
 ## [1.1.0] - 2023-05-21
 
 ### Changed
