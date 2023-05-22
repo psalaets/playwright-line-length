@@ -4,6 +4,7 @@
   "description": "Check line lengths with playwright",
   "type": "module",
   "module": "dist/index.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/*"
