@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.4.0] - 2023-05-22
+
+### Changed
+
+- Yet another metadata fix.
+
 ## [1.3.0] - 2023-05-22
 
 ### Changed
