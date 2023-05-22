@@ -1,6 +1,6 @@
 # playwright-line-length
 
-Check element line lengths with playwright.
+Check line lengths with playwright.
 
 ## Install
 
@@ -10,12 +10,14 @@ npm install playwright-line-length -D
 
 ## Add to playwright config
 
-In `playwright.config.js`:
+Make two changes in `playwright.config.js`:
 
 ```js
 import { expect, defineConfig } from '@playwright/test';
+// 1. Add this import
 import { lineLengthAssertions } from 'playwright-line-length';
 
+// 2. Add this line
 expect.extend(lineLengthAssertions);
 
 export default defineConfig({
