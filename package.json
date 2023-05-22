@@ -1,6 +1,6 @@
 {
   "name": "playwright-line-length",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Check line lengths with playwright",
   "type": "module",
   "module": "dist/index.js",
